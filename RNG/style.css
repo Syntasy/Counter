@@ -1,4 +1,51 @@
 body{
+    background-color: rgb(71, 71, 71);
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
 }
 
+#myButton{
+    background-color: black;
+    box-shadow:5px 5px 15px rgba(255, 0, 0, 0.3);
+    color: rgb(222, 255, 174);
+    font-size: 3em;
+    padding: 5px 25px;
+    border-color: orangered;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.myLabels{
+    font-size: 3em;
+    
+
+}
+
+.myLabels:hover{
+    color: blue;
+    box-shadow: 0 0 20px rgba(0, 162, 255, 0.7);
+    transition: box-shadow 0.3s ease;
+}
+
+#dice {
+    font-size: 5em;
+    margin: 20px;
+    transition: transform 0.2s;
+}
+
+.roll-animation {
+    animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.dice {
+    font-size: 5em;
+    display: inline-block;
+    margin: 0 10px;
+    transition: transform 0.1s ease-in-out;
+}
