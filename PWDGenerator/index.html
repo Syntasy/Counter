@@ -7,7 +7,26 @@
     <title>Document</title>
 </head>
 <body>
- 
+    <div class="generator">
+        <label>
+            Password Length:
+            <input type="number" id="lengthInput" min="1" max="128" value="12" />
+        </label>
+
+    <div class="options">
+      <label><input type="checkbox" id="lowercase" checked /> Include lowercase</label>
+      <label><input type="checkbox" id="uppercase" checked /> Include UPPERCASE</label>
+      <label><input type="checkbox" id="numbers"   checked /> Include numbers</label>
+      <label><input type="checkbox" id="symbols"   checked /> Include symbols</label>
+    </div>
+
+    <textarea id="output" rows="2" readonly placeholder="Your password…"></textarea>
+
+    <div>
+      <button id="generateBtn">Generate</button>
+      <button id="copyBtn" disabled>Copy</button>
+    </div>
+  </div>
     
 
 

@@ -5,23 +5,21 @@ function generatePassword(length, includeLowercase, includeNumbers, includeUpper
     const symbolsChars = "`!@#$%^&*()_+=-,./;':";
 
     let allowedChars = "";
-    let password= "";
+    let password = "";
 
-    // Password options
     allowedChars += includeLowercase ? lowercaseChars : "";
     allowedChars += includeUppercase ? uppercaseChars : "";
     allowedChars += includeNumbers ? numberChars : "";
     allowedChars += includeSymbols ? symbolsChars : "";
 
-    // verify
-    if(length <= 0){
-        return `(pasword too short)`;
+    if (length <= 0) {
+        return "(password too short)";
     }
-    if(allowedChars.length === 0){
-        return `(select at least one)`;
+    if (allowedChars.length === 0) {
+        return "(select at least one)";
     }
 
-    for(let i = 0; i < length; i++){
+    for (let i = 0; i < length; i++) {
         const randomIndex = Math.floor(Math.random() * allowedChars.length);
         password += allowedChars[randomIndex];
     }
@@ -29,20 +27,32 @@ function generatePassword(length, includeLowercase, includeNumbers, includeUpper
     return password;
 }
 
-const passwordLength   = 12;
-const includeLowercase = true;
-const includeUppercase = true;  
-const includeNumbers   = true;
-const includeSymbols   = true;
+document.addEventListener('DOMContentLoaded', () => {
+    const generateBtn = document.getElementById('generateBtn');
+    const output = document.getElementById('output');
+    const copyBtn = document.getElementById('copyBtn');
 
-// generating password, have to keep these in correct order (ugh)
-const password = generatePassword(
-  passwordLength,
-  includeLowercase,
-  includeUppercase,
-  includeNumbers,
-  includeSymbols
-);
+    generateBtn.addEventListener('click', () => {
+        const length = parseInt(document.getElementById('lengthInput').value);
+        const includeLowercase = document.getElementById('lowercase').checked;
+        const includeUppercase = document.getElementById('uppercase').checked;
+        const includeNumbers = document.getElementById('numbers').checked;
+        const includeSymbols = document.getElementById('symbols').checked;
 
-// return generated password
-console.log(`generated password: ${password}`);
+        const password = generatePassword(
+            length,
+            includeLowercase,
+            includeNumbers,
+            includeUppercase,
+            includeSymbols
+        );
+
+        output.value = password;
+        copyBtn.disabled = password.startsWith("("); // Disable copy button if password is an error
+    });
+
+    copyBtn.addEventListener('click', () => {
+        const output = document.getElementById('output');
+        navigator.clipboard.writeText(output.value);
+    });
+});
