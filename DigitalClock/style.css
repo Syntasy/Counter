@@ -19,7 +19,7 @@ body{
     color: rgb(255, 72, 0);
     backdrop-filter: blur(5px);
     width: 100%;
-    background-color: hsl(0, 0%, 96%, 0.1);
+    background-color: hsla(24, 100%, 50%, 0.1);
     font-family: monospace;
     font-size: 6.5rem;
     font-weight: bold;
